@@ -136,10 +136,11 @@ body {
 .cart {
   margin-top: 45px;
   display: flex;
-  flex-basis: 32%;
+  flex-basis: 30%;
   flex-flow: column nowrap;
   background-color: rgb(241, 241, 238);
-  height: 100vh;
+  height: 100%;
+  margin-bottom: 0;
 }
 
 .cart .cart__items {
