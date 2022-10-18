@@ -7,4 +7,3 @@ node_modules/
 cypress/reports
 cypress/screenshots
 coverage/
-libs
