@@ -1,11 +1,7 @@
 const itemSec = document.querySelector('.items');
-
 const cartItems = document.querySelector('.cart__items');
-
 const emptyCartBtn = document.querySelector('.empty-cart');
-
 const total = document.querySelector('.total-price');
-
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.classList = 'item__image';
