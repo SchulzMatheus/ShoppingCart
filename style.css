@@ -26,6 +26,7 @@ body {
   color: rgb(221, 221, 221);
   font-size: 30px;
   padding-left: 30px;
+  cursor: pointer;
 }
 
 .container-cartTitle {
@@ -107,6 +108,14 @@ body {
   background-color: rgb(230, 226, 220);
 }
 
+.material-icons {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
 .item .item__id {
   display: none;
 }
@@ -123,8 +132,8 @@ body {
   width: 100%;
 }
 
-.item .item__add {
-  background-color: #007bff;
+.item .item__add::placeholder {
+  background-color: rgb(52, 58, 64);
   border: 0;
   cursor: pointer;
   margin: 0;
@@ -136,11 +145,10 @@ body {
 .cart {
   margin-top: 45px;
   display: flex;
-  flex-basis: 30%;
+  flex-basis: 32%;
   flex-flow: column nowrap;
   background-color: rgb(241, 241, 238);
-  height: 100%;
-  margin-bottom: 0;
+  height: 100vh;
 }
 
 .cart .cart__items {
@@ -159,7 +167,7 @@ body {
 .wave {
   width: 5px;
   height: 100px;
-  background: linear-gradient(45deg, black, white);
+  background: linear-gradient(45deg, blue, white);
   margin: 10px;
   animation: wave 1s linear infinite;
   border-radius: 20px;

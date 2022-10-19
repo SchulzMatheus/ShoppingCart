@@ -2,11 +2,25 @@ const itemSec = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
 const emptyCartBtn = document.querySelector('.empty-cart');
 const total = document.querySelector('.total-price');
+const btnCar = document.querySelector('.material-icons');
+const cart = document.querySelector('.cart');
+const items = document.querySelector('.items');
+const home = document.querySelector('.title');
+cart.style.display = 'none';
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.classList = 'item__image';
   img.src = imageSource;
   return img;
+};
+
+const displayFlexCar = () => {
+  cart.style.display = 'flex';
+  items.style.display = 'none';
+};
+const displayFlexItems = () => {
+  cart.style.display = 'none';
+  items.style.display = 'flex';
 };
 
 const summary = () => {
@@ -43,14 +57,13 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
   return section;
 };
 
-// const getIdFromProductItem = (product) => product.querySelector('span.id').innerText;
-
-const createCartItemElement = ({ id, title, price }) => {
+const createCartItemElement = ({ id, title, price, thumbnail }) => {
   const li = document.createElement('li');
   li.classList = 'cart__item list-group-item list-group-item-action';
   li.innerText = `ID: ${id} | TITLE: ${title} | PRICE: $${price}`;
   li.addEventListener('click', cartItemClickListener);
   li.id = `${price}`;
+  li.appendChild(createProductImageElement(thumbnail));
   return li;
 };
 const getItens = async () => {
@@ -77,6 +90,8 @@ cartItems.innerHTML = null;
 localStorage.clear();
 summary();
 });
+btnCar.addEventListener('click', displayFlexCar);
+home.addEventListener('click', displayFlexItems);
 };
 const auxLocalStorage = () => {
   const savedCart = cartItems;
