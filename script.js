@@ -1,3 +1,5 @@
+const x = 'oito';
+
 const itemSec = document.querySelector('.items');
 const cartItems = document.querySelector('.cart__items');
 const emptyCartBtn = document.querySelector('.empty-cart');
@@ -6,6 +8,8 @@ const btnCar = document.querySelector('.material-icons');
 const cart = document.querySelector('.cart');
 const items = document.querySelector('.items');
 const home = document.querySelector('.title');
+const ol = document.getElementsByTagName('li');
+const cartNamed = document.getElementsByClassName('cart__title')[0];
 cart.style.display = 'none';
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
@@ -13,7 +17,7 @@ const createProductImageElement = (imageSource) => {
   img.src = imageSource;
   return img;
 };
-
+const cartCount = () => cartNamed.innerText = `Meu carrinho ( ${ol.length } )`;
 const displayFlexCar = () => {
   cart.style.display = 'flex';
   items.style.display = 'none';
@@ -35,6 +39,7 @@ const summary = () => {
 
 const cartItemClickListener = (event) => {
   event.target.remove();
+  cartCount();
   saveCartItems(cartItems.innerHTML);
   summary();
 };
@@ -77,6 +82,7 @@ const addToCart = async ({ target }) => {
   const id = target.parentNode.firstChild.innerText;
   const product = await fetchItem(id);
   cartItems.appendChild(createCartItemElement(product));
+  cartCount();
   summary();
   saveCartItems(cartItems.innerHTML);
 };
@@ -88,9 +94,11 @@ addBtn.forEach((button) => {
 emptyCartBtn.addEventListener('click', () => {
 cartItems.innerHTML = null;
 localStorage.clear();
+cartCount();
 summary();
 });
-btnCar.addEventListener('click', displayFlexCar);
+cartNamed.addEventListener('click', displayFlexCar);
+cartNamed.addEventListener('click', displayFlexCar);
 home.addEventListener('click', displayFlexItems);
 };
 const auxLocalStorage = () => {
@@ -103,5 +111,7 @@ window.onload = async () => {
 await getItens();
 btnFunc();
 auxLocalStorage();
+cartCount();
 summary();
+
 };
